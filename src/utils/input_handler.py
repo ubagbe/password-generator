@@ -1,4 +1,5 @@
 from src.utils import show_menu, Validator, logger
+from src.models import PasswordConfig
 
 
 class InputHandler:
@@ -12,6 +13,7 @@ class InputHandler:
             if choice == "1":
                 password_length = cls.get_password_length()
                 (is_uppercase, is_lowercase, includes_numbers, includes_special_character) = cls.get_character_preferences()
+                config = PasswordConfig(password_length, is_uppercase, is_lowercase, includes_numbers, includes_special_character)
             # Password Strengh Check Logic
             elif choice == "2":
                 password = cls.get_password_input()
