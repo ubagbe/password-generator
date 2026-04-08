@@ -1,4 +1,4 @@
-from src.utils import show_menu
+from src.utils import show_menu, Validator
 
 
 class InputHandler:
@@ -24,22 +24,30 @@ class InputHandler:
 
     @staticmethod
     def get_password_length():
-        length = input("Enter the password length (8 - 32): ")
-        return length
+        while True:
+            try:
+                length = input("Enter the password length (8 - 32): ")
+                return Validator.validate_length(int(length))
+            except ValueError as e:
+                print("Error:", e)
+                print("Please try again")
 
     @staticmethod
     def get_character_preferences():
-        is_uppercase = input("Includes Uppercase? (y/n): ")
-        is_lowercase = input("Includes Lowercase? (y/n): ")
-        includes_numbers = input("Includes Numbers? (y/n): ")
-        includes_special_character = input("Includes Special Characers? (y/n): ")
-
-        return (is_uppercase, is_lowercase, includes_numbers, includes_special_character)
+        while True:
+            try:
+                is_uppercase = Validator.validate_yes_no(input("Includes Uppercase? (y/n): "))
+                is_lowercase = Validator.validate_yes_no(input("Includes Lowercase? (y/n): "))
+                includes_numbers = Validator.validate_yes_no(input("Includes Numbers? (y/n): "))
+                includes_special_character = Validator.validate_yes_no(input("Includes Special Characers? (y/n): "))
+    
+                return (is_uppercase, is_lowercase, includes_numbers, includes_special_character)
+            except ValueError as e:
+                print("Error:", e)
+                print("Please try again")
 
     @staticmethod
     def get_password_input():
         password = input("Please enter yor password: ")
         return password
 
-if __name__ == "__main__":
-    InputHandler.get_menu_choice()
