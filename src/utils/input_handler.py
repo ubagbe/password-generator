@@ -1,4 +1,4 @@
-from src.utils import show_menu, Validator
+from src.utils import show_menu, Validator, logger
 
 
 class InputHandler:
@@ -28,9 +28,10 @@ class InputHandler:
             try:
                 length = input("Enter the password length (8 - 32): ")
                 return Validator.validate_length(int(length))
-            except ValueError as e:
-                print("Error:", e)
-                print("Please try again")
+            except ValueError as ve:
+                logger.error(f"{ve}. Please try again")
+            except Exception as e:
+                logger.error(f"{e}. Please try again")
 
     @staticmethod
     def get_character_preferences():
@@ -42,12 +43,12 @@ class InputHandler:
                 includes_special_character = Validator.validate_yes_no(input("Includes Special Characers? (y/n): "))
     
                 return (is_uppercase, is_lowercase, includes_numbers, includes_special_character)
-            except ValueError as e:
-                print("Error:", e)
-                print("Please try again")
+            except ValueError as ve:
+                logger.error(f"{ve}. Please try again")
+            except Exception as e:
+                logger.error(f"{e}. Please try again")
 
     @staticmethod
     def get_password_input():
         password = input("Please enter yor password: ")
         return password
-

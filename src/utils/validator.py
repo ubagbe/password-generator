@@ -12,4 +12,4 @@ class Validator:
         if value in ["y","n"]:
             return  value
         else:
-            raise ValueError("Invalid input  use only (y/n) ")
+            raise ValueError("Invalid input use only (y/n)")
