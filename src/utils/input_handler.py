@@ -1,18 +1,12 @@
+from src.utils import show_menu
+
+
 class InputHandler:
-
-    @staticmethod
-    def show_menu():
-        print("-------------------------")
-        print("PASSWORD GENERATOR SYSTEM")
-        print("-------------------------")
-        print("1. Generate Password")
-        print("2. Check Password Strength")
-        print("3. Exit")
-
+    
     @classmethod
     def get_menu_choice(cls):
         while True:
-            cls.show_menu()
+            show_menu()
             choice = input("Please Enter You Choice : ")
             # Generate Password Logic
             if choice == "1":
