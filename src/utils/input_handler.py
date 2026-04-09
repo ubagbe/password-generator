@@ -10,9 +10,11 @@ class InputHandler:
             try:
                 if choice in ["1","2","3"]:
                     return choice
-                raise ValueError("Please enter 1 or 2 or 3.")
+                raise ValueError("Please enter 1 or 2 or 3")
             except  ValueError as ve:
-                logger.error(ve)
+                logger.error(f"{ve}. Please try again")
+            except Exception as e:
+                logger.error(f"{e}. Please try again")    
                 
 
     @staticmethod
