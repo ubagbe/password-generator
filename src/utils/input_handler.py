@@ -1,33 +1,19 @@
-from src.utils import show_menu, Validator, logger
-from src.models import PasswordConfig
-from src.services import PasswordGenerator, StrengthChecker
+from src.utils import Validator, logger
 
 
 class InputHandler:
     
-    @classmethod
-    def get_menu_choice(cls):
+    @staticmethod
+    def get_menu_choice():
         while True:
-            show_menu()
-            choice = input("Please Enter You Choice : ")
-            # Generate Password Logic
-            if choice == "1":
-                password_length = cls.get_password_length()
-                (is_uppercase, is_lowercase, includes_numbers, includes_special_character) = cls.get_character_preferences()
-                config = PasswordConfig(password_length, is_uppercase, is_lowercase, includes_numbers, includes_special_character)
-                password = PasswordGenerator.generate(config)
-                print(f"Generated Password: {password}")
-            # Password Strengh Check Logic
-            elif choice == "2":
-                password = cls.get_password_input()
-                final_password = StrengthChecker.check_password(password)
-                logger.info(final_password)
-            elif choice == "3":
-                print("Thank you for using the Password Generator!")
-                break
-            else:
-                print("Invalid menu choice. Please select the listed options.") 
-        return choice
+            choice = input("Please Enter You Choice : ")  
+            try:
+                if choice in ["1","2","3"]:
+                    return choice
+                raise ValueError("Please enter 1 or 2 or 3.")
+            except  ValueError as ve:
+                logger.error(ve)
+                
 
     @staticmethod
     def get_password_length():
