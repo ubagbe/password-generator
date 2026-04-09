@@ -20,6 +20,8 @@ class InputHandler:
             # Password Strengh Check Logic
             elif choice == "2":
                 password = cls.get_password_input()
+                final_password = StrengthChecker.check_password(password)
+                logger.info(final_password)
             elif choice == "3":
                 print("Thank you for using the Password Generator!")
                 break
@@ -56,6 +58,5 @@ class InputHandler:
     @staticmethod
     def get_password_input():
         password = input("Please enter yor password: ")
-        final_password = StrengthChecker.check_password(password)
-        logger.info(final_password)
+        
         return password
