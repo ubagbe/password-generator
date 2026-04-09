@@ -58,5 +58,4 @@ class InputHandler:
     @staticmethod
     def get_password_input():
         password = input("Please enter yor password: ")
-        
         return password
