@@ -1,6 +1,6 @@
 from src.utils import show_menu, Validator, logger
 from src.models import PasswordConfig
-from src.services import PasswordGenerator
+from src.services import PasswordGenerator, StrengthChecker
 
 
 class InputHandler:
@@ -20,6 +20,8 @@ class InputHandler:
             # Password Strengh Check Logic
             elif choice == "2":
                 password = cls.get_password_input()
+                final_password = StrengthChecker.check_password(password)
+                logger.info(final_password)
             elif choice == "3":
                 print("Thank you for using the Password Generator!")
                 break
