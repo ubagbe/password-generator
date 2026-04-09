@@ -56,6 +56,6 @@ class InputHandler:
     @staticmethod
     def get_password_input():
         password = input("Please enter yor password: ")
-        FinalPassword = StrengthChecker.check_password(password)
-        logger.info(FinalPassword)
+        final_password = StrengthChecker.check_password(password)
+        logger.info(final_password)
         return password
