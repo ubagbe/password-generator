@@ -1,6 +1,6 @@
 from src.utils import show_menu, Validator, logger
 from src.models import PasswordConfig
-from src.services import PasswordGenerator
+from src.services import PasswordGenerator, StrengthChecker
 
 
 class InputHandler:
@@ -56,4 +56,6 @@ class InputHandler:
     @staticmethod
     def get_password_input():
         password = input("Please enter yor password: ")
+        FinalPassword = StrengthChecker.checkpassword(password)
+        logger.info(FinalPassword)
         return password
