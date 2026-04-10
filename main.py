@@ -1,6 +1,7 @@
-from src.utils import InputHandler, show_menu, logger
 from src.models import PasswordConfig
 from src.services import PasswordGenerator, StrengthChecker
+from src.utils import InputHandler, logger, show_menu
+
 
 class Application:
 
@@ -24,8 +25,6 @@ class Application:
                 elif choice == "3":
                     print("Thank you for using the Password Generator!")
                     break
-                else:
-                    print("Invalid menu choice. Please select the listed options.")
             except ValueError as ve:
                 logger.error(f"{ve} Invalid value")
             except Exception as e:

@@ -3,10 +3,10 @@ from src.utils import Validator, logger
 
 class InputHandler:
     
-    @classmethod
-    def get_menu_choice(cls):
+    @staticmethod
+    def get_menu_choice():
         while True:
-            choice = input("Please Enter You Choice : ")  
+            choice = input("Please enter your choice : ")  
             try:
                 if choice in ["1","2","3"]:
                     return choice
@@ -14,7 +14,7 @@ class InputHandler:
             except  ValueError as ve:
                 logger.error(f"{ve}. Please try again")
             except Exception as e:
-                logger.error(f"{e}. Please try again")    
+                logger.error(f"Unexpected error: {e}")    
                 
 
     @staticmethod
@@ -26,7 +26,7 @@ class InputHandler:
             except ValueError as ve:
                 logger.error(f"{ve}. Please try again")
             except Exception as e:
-                logger.error(f"{e}. Please try again")
+                logger.error(f"Unexpected error: {e}")
 
     @staticmethod
     def get_character_preferences():
@@ -41,7 +41,7 @@ class InputHandler:
             except ValueError as ve:
                 logger.error(f"{ve}. Please try again")
             except Exception as e:
-                logger.error(f"{e}. Please try again")
+                logger.error(f"Unexpected error: {e}")
 
     @staticmethod
     def get_password_input():
