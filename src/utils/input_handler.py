@@ -3,8 +3,8 @@ from src.utils import Validator, logger
 
 class InputHandler:
     
-    @staticmethod
-    def get_menu_choice():
+    @classmethod
+    def get_menu_choice(cls):
         while True:
             choice = input("Please Enter You Choice : ")  
             try:
