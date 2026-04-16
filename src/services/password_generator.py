@@ -1,5 +1,5 @@
-import string
 import random
+import string
 
 
 class PasswordGenerator:
@@ -7,8 +7,7 @@ class PasswordGenerator:
     @classmethod
     def generate(cls, config):
         character_pool = cls.create_character_pool(config)
-        password = cls.build_password(character_pool, config.password_length)
-        return password 
+        return cls.build_password(character_pool, config.password_length)  
 
     @classmethod
     def create_character_pool(cls, config):
@@ -28,6 +27,5 @@ class PasswordGenerator:
     
     @classmethod
     def build_password(cls, character_pool, length):
-        password = random.choices(character_pool, k=length)
-        password = ''.join(password)
+        password = ''.join(random.choices(character_pool, k=length))
         return password

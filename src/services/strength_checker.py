@@ -6,16 +6,16 @@ class StrengthChecker:
     @classmethod
     def check_password(cls, password):
         length = len(password)
-        digit = any(_ in string.digits for _ in password)
-        lowercase = any(_ in string.ascii_lowercase for _ in password)
-        uppercase = any(_ in string.ascii_uppercase for _ in password)
-        special = any(_ in string.punctuation for _ in password)
+        digit = any(char in string.digits for char in password)
+        lowercase = any(char in string.ascii_lowercase for char in password)
+        uppercase = any(char in string.ascii_uppercase for char in password)
+        special = any(char in string.punctuation for char in password)
 
         if  (length > 12) and  special and digit and uppercase and lowercase:
-            return("Strong Password")
+            return "Strong Password"
         elif (10 <= length <= 12) and (digit or special) and uppercase and lowercase:
-            return("Medium Password")
+            return "Medium Password"
         elif (8 <= length <= 10) and uppercase and lowercase:
-            return("Week Password")
+            return "Weak Password"
         else:
-            return("Very Week Password")
+            return "Very Weak Password"
